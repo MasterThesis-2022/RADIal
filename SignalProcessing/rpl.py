@@ -1,5 +1,5 @@
 import os
-import cupy as cp
+#import cupy as cp
 import numpy as np
 import mkl_fft
 from scipy import signal
@@ -76,7 +76,7 @@ class CA_CFAR():
     
 
 class RadarSignalProcessing():
-    def __init__(self,path_calib_mat,method='PC',device='cpu',lib='CuPy'):
+    def __init__(self,path_calib_mat,method='PC',device='cpu',lib='PyTorch'):
             
         # Radar parameters
         self.numSamplePerChirp = 512

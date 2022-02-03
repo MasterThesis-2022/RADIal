@@ -12,7 +12,7 @@ class RADIal(Dataset):
     def __init__(self, root_dir,difficult=False):
 
         self.root_dir = root_dir
-        
+       RADIal
         self.labels = pd.read_csv(os.path.join(root_dir,'labels.csv')).to_numpy()
        
         # Keeps only easy samples
@@ -64,9 +64,11 @@ class RADIal(Dataset):
         # Read the Radar point cloud
         filename = os.path.join(self.root_dir,'radar_PCL',"pcl_{:06d}.npy".format(sample_id))
         # range,azimuth,elevation,power,doppler,x,y,z,v
-        radar_pc = np.load(filename,allow_pickle=True)[[5,6,7],:]   # Keeps only x,y,z
+        radar_pc = np.load(filename,allow_pickle=True)#[[5,6,7],:]   # Keeps only x,y,z
         radar_pc = np.rollaxis(radar_pc,1,0)
-        radar_pc[:,1] *= -1
+        radar_pc[:,6] *= -1
+        radar_pc[:,1] = np.radians(radar_pc[:,1])
+        radar_pc[:,2] = np.radians(radar_pc[:,2])
 
         # Read the Laser point cloud
         filename = os.path.join(self.root_dir,'laser_PCL',"pcl_{:06d}.npy".format(sample_id))
@@ -75,7 +77,7 @@ class RADIal(Dataset):
         #    float radialDistance;
         #    float polAngle,aziAngle;
         #    uint8_t layer_index;
-        laser_pc = np.load(filename,allow_pickle=True)[:,:3]    # Keeps only x,y,z
+        laser_pc = np.load(filename,allow_pickle=True)#[:,:3]    # Keeps only x,y,z
 
     
         # Read the segmentation map
