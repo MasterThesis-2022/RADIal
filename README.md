@@ -4,6 +4,13 @@
 **RADIal is available now! Check the download section.**
 However, because we are currently working on the data anonymization, we provide for now a low resolution preview video stream. The full resolution will be provided once the anonymization is completed, planned by **2022, February**. 
 
+# Running the code
+In the root RADIal directory, run the notebooks through a local jupyter instance
+```sh
+sudo docker run --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work jupyter/scipy-notebook
+```
+
+The code assumes that the labeled dataset is in the root directory under the name `dataset`.
 
 # RADIal dataset
 RADIal stands for “Radar,  Lidar et  al.” It's a collection of 2-hour of raw  data  from  synchronized  automotive-grade  sensors (camera,  laser,  High Definition  radar)  in  various  environments  (citystreet,  highway,  countryside  road) and comes with GPS and vehicle’s CAN traces.
