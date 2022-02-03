@@ -12,7 +12,6 @@ class RADIal(Dataset):
     def __init__(self, root_dir,difficult=False):
 
         self.root_dir = root_dir
-       RADIal
         self.labels = pd.read_csv(os.path.join(root_dir,'labels.csv')).to_numpy()
        
         # Keeps only easy samples
